@@ -1,0 +1,64 @@
+import math
+
+# Function to perform mathematical operations
+def calculate(num1, num2, operation):
+    if operation == "1":
+        return num1 + num2
+    elif operation == "2":
+        return num1 - num2
+    elif operation == "3":
+        return num1 * num2
+    elif operation == "4":
+        if num2 == 0:
+            return "Error: Division by zero is not allowed."
+        return num1 / num2
+    else:
+        return "Invalid operation."
+
+# Function for square root
+def square_root(number):
+    if number < 0:
+        return "Error: Cannot calculate square root of a negative number."
+    return math.sqrt(number)
+
+# Main program loop
+while True:
+    print("\n----- Simple Python Calculator -----")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Square Root")
+    print("6. Exit")
+
+    choice = input("Choose an operation (1-6): ")
+
+    try:
+        if choice in ["1", "2", "3", "4"]:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+            result = calculate(num1, num2, choice)
+
+            if isinstance(result, str):
+                print(result)
+            else:
+                print(f"Result: {result:.2f}")
+
+        elif choice == "5":
+            number = float(input("Enter a number: "))
+            result = square_root(number)
+
+            if isinstance(result, str):
+                print(result)
+            else:
+                print(f"Square root: {result:.2f}")
+
+        elif choice == "6":
+            print("Exiting calculator. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please select between 1 and 6.")
+
+    except ValueError:
+        print("Error: Please enter valid numerical values.")
